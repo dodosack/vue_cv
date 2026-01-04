@@ -30,17 +30,18 @@ const store = useProfileStore()
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
   position: sticky;
   top: 0;
   z-index: 100;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav-brand a {
   font-size: 1.25rem;
   font-weight: bold;
-  color: #333;
+  color: var(--text-primary);
   text-decoration: none;
 }
 
@@ -50,7 +51,7 @@ const store = useProfileStore()
 }
 
 .nav-links a {
-  color: #666;
+  color: var(--text-secondary);
   text-decoration: none;
   padding: 0.5rem 0;
   border-bottom: 2px solid transparent;
@@ -58,12 +59,12 @@ const store = useProfileStore()
 }
 
 .nav-links a:hover {
-  color: #3b82f6;
+  color: var(--primary);
 }
 
 .nav-links a.active {
-  color: #3b82f6;
-  border-bottom-color: #3b82f6;
+  color: var(--primary);
+  border-bottom-color: var(--primary);
 }
 
 .theme-toggle {
@@ -77,6 +78,6 @@ const store = useProfileStore()
 }
 
 .theme-toggle:hover {
-  background: #f0f0f0;
+  background: var(--bg-card-hover);
 }
 </style>

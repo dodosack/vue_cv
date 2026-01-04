@@ -87,7 +87,7 @@ onUnmounted(() => {
 }
 
 .cursor {
-  color: #3b82f6;
+  color: var(--primary);
   font-weight: 300;
   margin-left: 2px;
   opacity: 0;

@@ -47,27 +47,29 @@ const isCurrentJob = computed(() => props.experience.endDate === null)
   display: flex;
   gap: 1.5rem;
   padding: 1.5rem;
-  background: white;
-  border-radius: 8px;
-  border-left: 3px solid #e0e0e0;
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  border-left: 3px solid var(--border-color);
   position: relative;
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .experience-card.current {
-  border-left-color: #3b82f6;
+  border-left-color: var(--primary);
 }
 
 .timeline-dot {
   width: 12px;
   height: 12px;
-  background: #e0e0e0;
+  background: var(--border-color);
   border-radius: 50%;
   flex-shrink: 0;
   margin-top: 0.5rem;
+  transition: background 0.3s ease;
 }
 
 .current .timeline-dot {
-  background: #3b82f6;
+  background: var(--primary);
 }
 
 .card-content {
@@ -84,22 +86,23 @@ const isCurrentJob = computed(() => props.experience.endDate === null)
 .card-header h3 {
   margin: 0;
   font-size: 1.1rem;
+  color: var(--text-primary);
 }
 
 .date {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   white-space: nowrap;
 }
 
 .company {
-  color: #3b82f6;
+  color: var(--primary);
   margin: 0.25rem 0 0.75rem 0;
   font-weight: 500;
 }
 
 .description {
-  color: #555;
+  color: var(--text-secondary);
   margin: 0;
   line-height: 1.5;
 }
@@ -108,8 +111,8 @@ const isCurrentJob = computed(() => props.experience.endDate === null)
   display: inline-block;
   margin-top: 0.75rem;
   padding: 0.25rem 0.75rem;
-  background: #e8f4fd;
-  color: #3b82f6;
+  background: var(--primary-light);
+  color: var(--primary-dark);
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 500;

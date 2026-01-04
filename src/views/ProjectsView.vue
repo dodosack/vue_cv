@@ -117,10 +117,11 @@ onMounted(() => {
 
 .header h1 {
   margin: 0;
+  color: var(--text-primary);
 }
 
 .github-link {
-  color: #3b82f6;
+  color: var(--primary);
   text-decoration: none;
 }
 
@@ -132,13 +133,14 @@ onMounted(() => {
 .loading {
   text-align: center;
   padding: 3rem;
+  color: var(--text-secondary);
 }
 
 .spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid #e0e0e0;
-  border-top-color: #3b82f6;
+  border: 3px solid var(--border-color);
+  border-top-color: var(--primary);
   border-radius: 50%;
   margin: 0 auto 1rem;
   animation: spin 1s linear infinite;
@@ -154,15 +156,16 @@ onMounted(() => {
 .error {
   text-align: center;
   padding: 2rem;
-  background: #fee;
+  background: rgba(252, 129, 129, 0.1);
+  border: 1px solid var(--error);
   border-radius: 8px;
-  color: #c00;
+  color: var(--error);
 }
 
 .error button {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background: #c00;
+  background: var(--error);
   color: white;
   border: none;
   border-radius: 4px;
@@ -176,25 +179,31 @@ onMounted(() => {
   gap: 1.5rem;
   margin-bottom: 1.5rem;
   padding: 1rem;
-  background: white;
-  border-radius: 8px;
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .filter-group {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  color: var(--text-primary);
 }
 
 .filter-group select {
   padding: 0.5rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
+  background: var(--bg-card);
+  color: var(--text-primary);
 }
 
 .repo-count {
   margin-left: auto;
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
@@ -209,6 +218,6 @@ onMounted(() => {
 .empty {
   text-align: center;
   padding: 3rem;
-  color: #666;
+  color: var(--text-secondary);
 }
 </style>

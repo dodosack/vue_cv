@@ -90,7 +90,7 @@ const typingTexts = [
   text-align: center;
   padding: 3rem 2rem;
   margin-bottom: 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   border-radius: 16px;
   color: white;
 }
@@ -142,7 +142,7 @@ const typingTexts = [
 
 .btn-primary {
   background: white;
-  color: #667eea;
+  color: var(--primary);
 }
 
 .btn-primary:hover {
@@ -180,22 +180,24 @@ const typingTexts = [
 
 /* Preview Sections */
 .preview-section {
-  background: white;
+  background: var(--bg-card);
   padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .preview-section h2 {
   margin: 0 0 1rem 0;
   font-size: 1.1rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .see-more {
   display: inline-block;
   margin-top: 1rem;
-  color: #3b82f6;
+  color: var(--primary);
   text-decoration: none;
   font-weight: 500;
   font-size: 0.9rem;

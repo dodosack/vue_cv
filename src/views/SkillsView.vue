@@ -59,18 +59,21 @@ function setFilter(category: string | null) {
 
 h1 {
   margin: 0 0 1.5rem 0;
+  color: var(--text-primary);
 }
 
 .filter-buttons {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
 .filter-buttons button {
   padding: 0.5rem 1rem;
-  border: 1px solid #e0e0e0;
-  background: white;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-primary);
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -78,13 +81,13 @@ h1 {
 }
 
 .filter-buttons button:hover {
-  border-color: #3b82f6;
-  color: #3b82f6;
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .filter-buttons button.active {
-  background: #3b82f6;
-  border-color: #3b82f6;
+  background: var(--primary);
+  border-color: var(--primary);
   color: white;
 }
 </style>

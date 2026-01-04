@@ -33,8 +33,10 @@ const props = defineProps<{
   display: flex;
   gap: 2rem;
   padding: 2rem;
-  background: #f8f9fa;
-  border-radius: 12px;
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .profile-image img,
@@ -49,7 +51,7 @@ const props = defineProps<{
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #3b82f6;
+  background: var(--gradient-primary);
   color: white;
   font-size: 3rem;
   font-weight: bold;
@@ -58,21 +60,22 @@ const props = defineProps<{
 .profile-info h1 {
   margin: 0 0 0.5rem 0;
   font-size: 2rem;
+  color: var(--text-primary);
 }
 
 .title {
-  color: #3b82f6;
+  color: var(--primary);
   font-size: 1.2rem;
   margin: 0 0 0.5rem 0;
 }
 
 .location {
-  color: #666;
+  color: var(--text-secondary);
   margin: 0 0 1rem 0;
 }
 
 .bio {
-  color: #444;
+  color: var(--text-secondary);
   line-height: 1.6;
   margin: 0;
 }

@@ -67,16 +67,17 @@ const formatDate = (dateString: string): string => {
 
 <style scoped>
 .repo-card {
-  background: white;
-  border-radius: 12px;
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
   padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
 }
 
 .repo-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .repo-header {
@@ -93,7 +94,7 @@ const formatDate = (dateString: string): string => {
 }
 
 .repo-header a {
-  color: #3b82f6;
+  color: var(--primary);
   text-decoration: none;
 }
 
@@ -106,14 +107,14 @@ const formatDate = (dateString: string): string => {
   align-items: center;
   gap: 0.35rem;
   font-size: 0.85rem;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .language-dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #888;
+  background: var(--text-muted);
 }
 
 /* Sprach-Farben (wie auf GitHub) */
@@ -126,7 +127,7 @@ const formatDate = (dateString: string): string => {
 .language-dot[data-lang="Java"] { background: #b07219; }
 
 .description {
-  color: #555;
+  color: var(--text-secondary);
   margin: 0 0 1rem 0;
   line-height: 1.5;
 }
@@ -140,8 +141,8 @@ const formatDate = (dateString: string): string => {
 
 .topic {
   padding: 0.25rem 0.6rem;
-  background: #e8f4fd;
-  color: #3b82f6;
+  background: var(--primary-light);
+  color: var(--primary-dark);
   border-radius: 20px;
   font-size: 0.75rem;
 }
@@ -151,7 +152,7 @@ const formatDate = (dateString: string): string => {
   justify-content: space-between;
   align-items: center;
   padding-top: 0.75rem;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--border-color);
 }
 
 .stats {
@@ -161,18 +162,18 @@ const formatDate = (dateString: string): string => {
 
 .stat {
   font-size: 0.85rem;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .updated {
   font-size: 0.8rem;
-  color: #999;
+  color: var(--text-muted);
 }
 
 .demo-link {
   display: inline-block;
   margin-top: 1rem;
-  color: #3b82f6;
+  color: var(--primary);
   text-decoration: none;
   font-size: 0.9rem;
 }

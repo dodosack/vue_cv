@@ -149,10 +149,12 @@ onMounted(() => {
 
 <style scoped>
 .hacker-news {
-  background: white;
-  border-radius: 12px;
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
   padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .section-header {
@@ -161,12 +163,13 @@ onMounted(() => {
   align-items: center;
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .section-header h3 {
   margin: 0;
   font-size: 1.1rem;
+  color: var(--text-primary);
 }
 
 .source {
@@ -184,7 +187,7 @@ onMounted(() => {
 
 .skeleton {
   height: 60px;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-card-hover) 25%, var(--border-color) 50%, var(--bg-card-hover) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
   border-radius: 8px;
@@ -199,13 +202,13 @@ onMounted(() => {
 .error {
   text-align: center;
   padding: 2rem;
-  color: #c00;
+  color: var(--error);
 }
 
 .error button {
   margin-top: 0.5rem;
   padding: 0.5rem 1rem;
-  background: #c00;
+  background: var(--error);
   color: white;
   border: none;
   border-radius: 4px;
@@ -228,11 +231,11 @@ onMounted(() => {
 }
 
 .story-item:hover {
-  background: #f8f9fa;
+  background: var(--bg-card-hover);
 }
 
 .story-rank {
-  color: #999;
+  color: var(--text-muted);
   font-weight: 500;
   min-width: 1.5rem;
   text-align: right;
@@ -245,7 +248,7 @@ onMounted(() => {
 
 .story-title {
   display: block;
-  color: #333;
+  color: var(--text-primary);
   text-decoration: none;
   font-weight: 500;
   line-height: 1.4;
@@ -253,11 +256,11 @@ onMounted(() => {
 }
 
 .story-title:hover {
-  color: #3b82f6;
+  color: var(--primary);
 }
 
 .story-title:visited {
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .story-meta {
@@ -265,15 +268,15 @@ onMounted(() => {
   flex-wrap: wrap;
   gap: 0.5rem;
   font-size: 0.75rem;
-  color: #888;
+  color: var(--text-muted);
 }
 
 .domain {
-  color: #3b82f6;
+  color: var(--primary);
 }
 
 .comments {
-  color: #888;
+  color: var(--text-muted);
   text-decoration: none;
 }
 
@@ -287,17 +290,18 @@ onMounted(() => {
   width: 100%;
   margin-top: 1rem;
   padding: 0.75rem;
-  background: #f8f9fa;
-  border: 1px solid #eee;
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
+  color: var(--text-primary);
   transition: all 0.2s;
 }
 
 .refresh-btn:hover {
-  background: #3b82f6;
+  background: var(--primary);
   color: white;
-  border-color: #3b82f6;
+  border-color: var(--primary);
 }
 </style>

@@ -41,7 +41,7 @@ const filteredSkills = computed(() => {
 }
 
 .no-skills {
-  color: #999;
+  color: var(--text-muted);
   font-style: italic;
 }
 </style>

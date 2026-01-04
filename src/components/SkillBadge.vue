@@ -31,19 +31,20 @@ const props = defineProps<{
 .skill-name {
   width: 120px;
   font-weight: 500;
+  color: var(--text-primary);
 }
 
 .skill-bar {
   flex: 1;
   height: 8px;
-  background: #e0e0e0;
+  background: var(--border-color);
   border-radius: 4px;
   overflow: hidden;
 }
 
 .skill-progress {
   height: 100%;
-  background: #3b82f6;
+  background: var(--gradient-primary);
   border-radius: 4px;
   transition: width 0.3s ease;
 }
@@ -51,7 +52,7 @@ const props = defineProps<{
 .skill-level {
   width: 45px;
   text-align: right;
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 </style>
