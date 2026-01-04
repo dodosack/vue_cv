@@ -2,6 +2,7 @@
 import { ref, onMounted, computed } from 'vue'
 import { useGitHubStore } from '@/stores/github'
 import RepoCard from '@/components/RepoCard.vue'
+import type { GitHubRepo } from '@/types'
 
 const githubStore = useGitHubStore()
 
@@ -12,13 +13,13 @@ const showForks = ref(false)
 const selectedLanguage = ref<string | null>(null)
 
 // Gefilterte Repos
-const filteredRepos = computed(() => {
-  let result = showForks.value 
-    ? githubStore.repos 
+const filteredRepos = computed<GitHubRepo[]>(() => {
+  let result = showForks.value
+    ? githubStore.repos
     : githubStore.ownRepos
 
   if (selectedLanguage.value) {
-    result = result.filter(repo => repo.language === selectedLanguage.value)
+    result = result.filter((repo: GitHubRepo) => repo.language === selectedLanguage.value)
   }
 
   return result

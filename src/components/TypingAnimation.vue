@@ -24,8 +24,8 @@ let cursorInterval: ReturnType<typeof setInterval> | null = null
 
 // Typing Logik
 const type = () => {
-  const currentText = props.texts[currentIndex.value]
-  
+  const currentText = props.texts[currentIndex.value] ?? ''
+
   if (isTyping.value) {
     // Text tippen
     if (displayedText.value.length < currentText.length) {

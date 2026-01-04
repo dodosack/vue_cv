@@ -9,8 +9,10 @@ const props = defineProps<{
 // Datum formatieren
 const formatDate = (date: string | null): string => {
   if (!date) return 'Heute'
-  const [year, month] = date.split('-')
-  const months = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 
+  const parts = date.split('-')
+  const year = parts[0] ?? ''
+  const month = parts[1] ?? '01'
+  const months = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
                   'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez']
   return `${months[parseInt(month) - 1]} ${year}`
 }

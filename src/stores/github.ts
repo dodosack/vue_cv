@@ -12,21 +12,21 @@ export const useGitHubStore = defineStore('github', () => {
   const username = ref('') // Dein GitHub Username
 
   // Getters
-  
+
   // Nur eigene Repos (keine Forks)
-  const ownRepos = computed(() => 
-    repos.value.filter(repo => !repo.fork)
+  const ownRepos = computed<GitHubRepo[]>(() =>
+    repos.value.filter((repo: GitHubRepo) => !repo.fork)
   )
 
   // Nach Stars sortiert
-  const topRepos = computed(() => 
-    [...ownRepos.value].sort((a, b) => b.stargazers_count - a.stargazers_count)
+  const topRepos = computed<GitHubRepo[]>(() =>
+    [...ownRepos.value].sort((a: GitHubRepo, b: GitHubRepo) => b.stargazers_count - a.stargazers_count)
   )
 
   // Alle verwendeten Sprachen
-  const languages = computed(() => {
+  const languages = computed<string[]>(() => {
     const langs = repos.value
-      .map(repo => repo.language)
+      .map((repo: GitHubRepo) => repo.language)
       .filter((lang): lang is string => lang !== null)
     return [...new Set(langs)]
   })
