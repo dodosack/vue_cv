@@ -5,6 +5,7 @@ import SkillList from '@/components/SkillList.vue'
 import ExperienceCard from '@/components/ExperienceCard.vue'
 import TypingAnimation from '@/components/TypingAnimation.vue'
 import HackerNews from '@/components/HackerNews.vue'
+import ProgrammerMeme from '@/components/ProgrammerMeme.vue'
 
 const store = useProfileStore()
 
@@ -60,14 +61,17 @@ const typingTexts = [
 
         <section class="preview-section">
           <h2>💼 Aktuelle Position</h2>
-          <ExperienceCard 
-            v-if="store.currentJob" 
-            :experience="store.currentJob" 
+          <ExperienceCard
+            v-if="store.currentJob"
+            :experience="store.currentJob"
           />
           <RouterLink to="/experience" class="see-more">
             Kompletter Werdegang →
           </RouterLink>
         </section>
+
+        <!-- Programmer Meme -->
+        <ProgrammerMeme />
       </div>
 
       <!-- Right Column: Hacker News -->
