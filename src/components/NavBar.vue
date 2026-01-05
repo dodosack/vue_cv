@@ -1,8 +1,10 @@
 <script setup lang="ts">
+// navbar componente die oben auf jeder seite is
+// hat die navigation links und den dark mode toggle
 import { RouterLink } from 'vue-router'
 import { useProfileStore } from '@/stores/profile'
 
-const store = useProfileStore()
+const store = useProfileStore()  // für dark mode toggle
 </script>
 
 <template>

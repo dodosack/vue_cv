@@ -2,7 +2,8 @@
 // homeview ist die hauptseite mit hero section und den previews
 // importiere alle componenten die ich brauch
 import { useProfileStore } from '@/stores/profile'
-import ProfileHeader from '@/components/ProfileHeader.vue'  // wird grad nicht benutzt aber lass ich mal drin
+// ÜBERFLÜSSIG - ProfileHeader wird nirgends im template benutzt
+// import ProfileHeader from '@/components/ProfileHeader.vue'
 import SkillList from '@/components/SkillList.vue'
 import ExperienceCard from '@/components/ExperienceCard.vue'
 import TypingAnimation from '@/components/TypingAnimation.vue'

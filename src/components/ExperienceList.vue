@@ -1,4 +1,6 @@
 <script setup lang="ts">
+// liste von experience cards
+// einfacher wrapper der alle experiences durchloopt
 import ExperienceCard from './ExperienceCard.vue'
 import type { Experience } from '@/types'
 

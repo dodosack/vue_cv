@@ -1,20 +1,23 @@
 <script setup lang="ts">
+// skills seite mit filter buttons
+// zeigt alle skills mit progress bars
 import { ref, computed } from 'vue'
 import { useProfileStore } from '@/stores/profile'
 import SkillList from '@/components/SkillList.vue'
 
 const store = useProfileStore()
 
-// Filter State
+// welcher filter gerade aktiv is  null heisst alle
 const activeFilter = ref<string | null>(null)
 
-// Alle Kategorien ermitteln
+// holt alle kategorien aus den skills
+// mit Set damit keine duplikate
 const categories = computed(() => {
   const cats = new Set(store.skills.map(s => s.category))
   return Array.from(cats)
 })
 
-// Filter setzen
+// setzt den aktiven filter wenn man auf nen button klickt
 function setFilter(category: string | null) {
   activeFilter.value = category
 }

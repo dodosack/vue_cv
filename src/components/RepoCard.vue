@@ -1,11 +1,13 @@
 <script setup lang="ts">
+// karte für ein github repo
+// zeigt name beschreibung sprache stars usw
 import type { GitHubRepo } from '@/types'
 
 const props = defineProps<{
   repo: GitHubRepo
 }>()
 
-// Datum formatieren
+// formatiert das updated_at datum auf deutsch
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString)
   return date.toLocaleDateString('de-DE', {

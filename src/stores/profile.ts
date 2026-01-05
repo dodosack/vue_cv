@@ -1,20 +1,22 @@
-// src/stores/profile.ts
+// profil store mit allen persönlichen daten
+// das is quasi die datenbank für die ganze app
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import type { Skill, Experience, Project, Profile } from '@/types'
+import type { Skill, Experience, Profile } from '@/types'
+// Project import überflüssig weil projects auskommentiert
 
 export const useProfileStore = defineStore('profile', () => {
-  
-  // Persönliche Daten
+
+  // meine profil daten
   const profile = ref<Profile>({
     name: 'DodoSack',
     title: 'Movie Binge Watcher',
     email: 'dodosack@dodo.com',
     location: 'Dudelstadt, Dodoland',
-    bio: 'Leidenschaftlicher Entwickler mit Fokus auf moderne Webtechnologien oder so in der art.'
+    bio: 'Leidenschaftlicher Entwickler mit Fokus auf moderne Webtechnologien oder so in der art'
   })
 
-  // Skills
+  // meine skills mit level in prozent
   const skills = ref<Skill[]>([
     { name: 'Vue.js', level:65, category: 'frontend' },
     { name: 'TypeScript', level: 75, category: 'frontend' },
@@ -23,14 +25,14 @@ export const useProfileStore = defineStore('profile', () => {
     { name: 'Git', level: 90, category: 'tools' }
   ])
 
-  // Erfahrungen
+  // berufserfahrung  endDate null heisst aktueller job
   const experiences = ref<Experience[]>([
     {
       id: 1,
       company: 'Gastronomie',
       position: 'Porzelan Taucher',
       startDate: '2023-01',
-      endDate: null,
+      endDate: null,  // aktueller job
       description: 'Professionelle Unterwasser Porzelan Tauchgänge und Porzelan Polierung'
     },
     {
@@ -43,8 +45,13 @@ export const useProfileStore = defineStore('profile', () => {
     }
   ])
 
-  // Projekte
-  const projects = ref<Project[]>([
+
+
+
+  //brauche ich nicht mehr 
+  // projekte liste
+
+  /* const projects = ref<Project[]>([
     {
       id: 1,
       name: 'Portfolio Website',
@@ -52,20 +59,24 @@ export const useProfileStore = defineStore('profile', () => {
       technologies: ['Vue.js', 'TypeScript', 'CSS']
     }
   ])
+*/
 
-  // UI State
+
+
+  // dark mode is standardmässig an
   const darkMode = ref(true)
 
-  // Getters
-  const frontendSkills = computed(() => 
-    skills.value.filter(s => s.category === 'frontend')
-  )
+  // ÜBERFLÜSSIG - frontendSkills wird nirgends benutzt
+  // const frontendSkills = computed(() =>
+  //   skills.value.filter(s => s.category === 'frontend')
+  // )
 
-  const currentJob = computed(() => 
+  // gibt den aktuellen job zurück also wo endDate null is
+  const currentJob = computed(() =>
     experiences.value.find(e => e.endDate === null)
   )
 
-  // Actions
+  // toggle für dark mode button in der navbar
   function toggleDarkMode() {
     darkMode.value = !darkMode.value
   }
@@ -74,9 +85,9 @@ export const useProfileStore = defineStore('profile', () => {
     profile,
     skills,
     experiences,
-    projects,
+    // projects,  // auskommentiert weil überflüssig
     darkMode,
-    frontendSkills,
+    // frontendSkills,  // auskommentiert weil überflüssig
     currentJob,
     toggleDarkMode
   }

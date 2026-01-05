@@ -1,48 +1,52 @@
 <script setup lang="ts">
+// typing animation componente für den hero bereich
+// tippt texte ein löscht sie wieder und zeigt den nächsten
 import { ref, onMounted, onUnmounted } from 'vue'
 
-// Props
+// props mit default werten
 const props = withDefaults(defineProps<{
-  texts: string[]
-  typingSpeed?: number
-  deletingSpeed?: number
-  pauseDuration?: number
+  texts: string[]  // array von texten die durchgetippt werden
+  typingSpeed?: number  // ms pro buchstabe beim tippen
+  deletingSpeed?: number  // ms pro buchstabe beim löschen
+  pauseDuration?: number  // pause nachdem text fertig getippt is
 }>(), {
   typingSpeed: 100,
   deletingSpeed: 50,
   pauseDuration: 2000
 })
 
-// State
-const displayedText = ref('')
-const currentIndex = ref(0)
-const isTyping = ref(true)
-const cursorVisible = ref(true)
+// state
+const displayedText = ref('')  // der aktuell angezeigte text
+const currentIndex = ref(0)  // welcher text gerade dran is
+const isTyping = ref(true)  // ob wir gerade tippen oder löschen
+const cursorVisible = ref(true)  // für das blinken
 
+// timeout und interval referenzen zum aufräumen
 let timeout: ReturnType<typeof setTimeout> | null = null
 let cursorInterval: ReturnType<typeof setInterval> | null = null
 
-// Typing Logik
+// die eigentliche typing logik
+// ruft sich selbst rekursiv auf mit setTimeout
 const type = () => {
   const currentText = props.texts[currentIndex.value] ?? ''
 
   if (isTyping.value) {
-    // Text tippen
+    // text buchstabe für buchstabe tippen
     if (displayedText.value.length < currentText.length) {
       displayedText.value = currentText.slice(0, displayedText.value.length + 1)
       timeout = setTimeout(type, props.typingSpeed)
     } else {
-      // Fertig getippt → Pause → dann löschen
+      // fertig getippt  jetzt pause und dann löschen
       isTyping.value = false
       timeout = setTimeout(type, props.pauseDuration)
     }
   } else {
-    // Text löschen
+    // text buchstabe für buchstabe löschen
     if (displayedText.value.length > 0) {
       displayedText.value = displayedText.value.slice(0, -1)
       timeout = setTimeout(type, props.deletingSpeed)
     } else {
-      // Fertig gelöscht → nächster Text
+      // fertig gelöscht  nächster text
       isTyping.value = true
       currentIndex.value = (currentIndex.value + 1) % props.texts.length
       timeout = setTimeout(type, props.typingSpeed)
@@ -50,19 +54,21 @@ const type = () => {
   }
 }
 
-// Cursor blinken
+// lässt den cursor blinken
 const startCursorBlink = () => {
   cursorInterval = setInterval(() => {
     cursorVisible.value = !cursorVisible.value
   }, 500)
 }
 
-// Lifecycle
+// startet die animation wenn componente gemounted wird
 onMounted(() => {
   type()
   startCursorBlink()
 })
 
+// räumt timeouts und intervals auf wenn componente zerstört wird
+// sonst gibts memory leaks
 onUnmounted(() => {
   if (timeout) clearTimeout(timeout)
   if (cursorInterval) clearInterval(cursorInterval)

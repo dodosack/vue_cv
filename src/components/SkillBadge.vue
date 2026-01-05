@@ -1,7 +1,9 @@
 <script setup lang="ts">
+// einzelner skill mit fortschrittsbalken
+// zeigt name level und ne progress bar
 import type { Skill } from '@/types'
 
-// Props definieren
+// bekommt einen skill als prop
 const props = defineProps<{
   skill: Skill
 }>()

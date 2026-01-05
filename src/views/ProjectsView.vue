@@ -1,4 +1,6 @@
 <script setup lang="ts">
+// projekte seite die repos von github lädt
+// hat filter für sprache und ob forks gezeigt werden
 import { ref, onMounted, computed } from 'vue'
 import { useGitHubStore } from '@/stores/github'
 import RepoCard from '@/components/RepoCard.vue'
@@ -6,18 +8,21 @@ import type { GitHubRepo } from '@/types'
 
 const githubStore = useGitHubStore()
 
+// mein github username  hier ändern wenn du nen anderen user willst
 const GITHUB_USERNAME = 'dodosack'
 
-// Filter State
-const showForks = ref(false)
-const selectedLanguage = ref<string | null>(null)
+// filter state
+const showForks = ref(true)  // checkbox ob forks gezeigt werden  default an
+const selectedLanguage = ref<string | null>(null)  // dropdown für sprache
 
-// Gefilterte Repos
+// wendet die filter auf die repos an
 const filteredRepos = computed<GitHubRepo[]>(() => {
+  // wenn showForks aus is nimm nur eigene repos
   let result = showForks.value
     ? githubStore.repos
     : githubStore.ownRepos
 
+  // filter nach sprache wenn eine ausgewählt is
   if (selectedLanguage.value) {
     result = result.filter((repo: GitHubRepo) => repo.language === selectedLanguage.value)
   }
@@ -25,7 +30,7 @@ const filteredRepos = computed<GitHubRepo[]>(() => {
   return result
 })
 
-// Beim Laden der Seite: Repos fetchen
+// lädt die repos wenn die seite geladen wird
 onMounted(() => {
   githubStore.fetchRepos(GITHUB_USERNAME)
 })

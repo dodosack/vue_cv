@@ -1,18 +1,20 @@
 <script setup lang="ts">
+// liste von skills die skillbadges rendert
+// kann optional nach kategorie filtern
 import { computed } from 'vue'
 import SkillBadge from './SkillBadge.vue'
 import type { Skill } from '@/types'
 
-// Props definieren
+// skills array und optionaler filter
 const props = defineProps<{
   skills: Skill[]
-  filterCategory?: string    // optional: nur bestimmte Kategorie zeigen
+  filterCategory?: string  // wenn gesetzt werden nur skills dieser kategorie gezeigt
 }>()
 
-// Gefilterte Skills (Getter-Logik in der Komponente)
+// filtert die skills wenn ne kategorie gesetzt is
 const filteredSkills = computed(() => {
   if (!props.filterCategory) {
-    return props.skills
+    return props.skills  // alle zurückgeben wenn kein filter
   }
   return props.skills.filter(s => s.category === props.filterCategory)
 })

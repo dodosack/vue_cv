@@ -1,7 +1,10 @@
 <script setup lang="ts">
+// root componente der app
+// hier wird dark mode auf die ganze app angewandt
 import { useProfileStore } from '@/stores/profile'
 import NavBar from '@/components/NavBar.vue'
 
+// store für dark mode und profil daten
 const store = useProfileStore()
 </script>
 

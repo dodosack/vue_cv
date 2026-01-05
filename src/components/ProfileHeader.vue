@@ -1,6 +1,9 @@
 <script setup lang="ts">
+// profil header mit bild name und bio
+// wird grad nicht verwendet aber vielleicht später
 import type { Profile } from '@/types'
 
+// bekommt profil daten als prop
 const props = defineProps<{
   profile: Profile
 }>()

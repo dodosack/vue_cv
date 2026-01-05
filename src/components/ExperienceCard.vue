@@ -1,4 +1,6 @@
 <script setup lang="ts">
+// karte für eine einzelne berufserfahrung
+// zeigt position firma zeitraum und beschreibung
 import { computed } from 'vue'
 import type { Experience } from '@/types'
 
@@ -6,23 +8,26 @@ const props = defineProps<{
   experience: Experience
 }>()
 
-// Datum formatieren
+// macht aus 2023-01 sowas wie Jan 2023
 const formatDate = (date: string | null): string => {
-  if (!date) return 'Heute'
+  if (!date) return 'Heute'  // null heisst aktueller job
   const parts = date.split('-')
   const year = parts[0] ?? ''
   const month = parts[1] ?? '01'
+  // deutsche monatsnamen
   const months = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
                   'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez']
   return `${months[parseInt(month) - 1]} ${year}`
 }
 
+// formatierter zeitraum zb Jan 2023 - Heute
 const dateRange = computed(() => {
   const start = formatDate(props.experience.startDate)
   const end = formatDate(props.experience.endDate)
   return `${start} - ${end}`
 })
 
+// check ob es der aktuelle job is für das badge
 const isCurrentJob = computed(() => props.experience.endDate === null)
 </script>
 

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+// erfahrung seite mit allen jobs
+// ziemlich simpel nur die liste rendern
 import { useProfileStore } from '@/stores/profile'
 import ExperienceList from '@/components/ExperienceList.vue'
 
