@@ -16,11 +16,11 @@ const store = useProfileStore()
 // die texte die in der hero section durchgetippt werden
 // kann man einfach erwietern wenn man mehr haben will
 const typingTexts = [
-  'Frontend Developer',
-  'Vue.js Enthusiast',
-  'TypeScript Fan',
-  'Problem Solver',
-  'Creative Coder'
+  'Promp-engineer Developer',
+  'Arch User',
+  'TypeScript Fanboy',
+  'Problem Maker',
+  'Boring Coder'
 ]
 </script>
 
