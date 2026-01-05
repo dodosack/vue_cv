@@ -79,12 +79,14 @@ const getDomain = (url?: string): string => {
 onMounted(() => {
   fetchStories()
 })
+
+// eig in home view rein
 </script>
 
 <template>
   <div class="hacker-news">
     <div class="section-header">
-      <h3>🔥 Tech News</h3>
+      <h3>Tech News</h3>
       <span class="source">via Hacker News</span>
     </div>
 

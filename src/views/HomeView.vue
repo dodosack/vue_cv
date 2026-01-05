@@ -52,7 +52,7 @@ const typingTexts = [
       <!-- Left Column -->
       <div class="left-column">
         <section class="preview-section">
-          <h2>⚡ Top Skills</h2>
+          <h2>Skills</h2>
           <SkillList :skills="store.skills.slice(0, 4)" />
           <RouterLink to="/skills" class="see-more">
             Alle Skills ansehen →
@@ -60,7 +60,7 @@ const typingTexts = [
         </section>
 
         <section class="preview-section">
-          <h2>💼 Aktuelle Position</h2>
+          <h2>Aktuelle Position</h2>
           <ExperienceCard
             v-if="store.currentJob"
             :experience="store.currentJob"

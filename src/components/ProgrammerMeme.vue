@@ -52,7 +52,7 @@ const loadNewMeme = () => {
 <template>
   <div class="programmer-meme">
     <div class="meme-header">
-      <h3>😂 Dev Humor</h3>
+      <h3>Dev Humor</h3>
       <button
         class="toggle-btn"
         @click="toggleMeme"
