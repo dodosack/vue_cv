@@ -1,28 +1,31 @@
 <script setup lang="ts">
+// meme componente die random memes von reddit holt
+// benutze die meme-api weil die einfach zu benutzen is und kostenlos
 import { ref, onMounted } from 'vue'
 
-// Meme Interface
+// interface für das meme object das von der api kommt
 interface Meme {
   title: string
-  url: string
-  postLink: string
+  url: string  // bild url
+  postLink: string  // link zum reddit post
   subreddit: string
   author: string
-  ups: number
+  ups: number  // upvotes
 }
 
-// State
-const meme = ref<Meme | null>(null)
+// state variablen
+const meme = ref<Meme | null>(null)  // das aktuelle meme
 const isLoading = ref(true)
 const error = ref<string | null>(null)
-const showMeme = ref(false)
+const showMeme = ref(false)  // ob das meme angezeit wird oder nicht
 
-// Meme laden
+// holt ein random meme vom ProgrammerHumor subreddit
 const fetchMeme = async () => {
   isLoading.value = true
   error.value = null
 
   try {
+    // die api gibt direkt ein random meme zurück super easy
     const response = await fetch('https://meme-api.com/gimme/ProgrammerHumor')
     if (!response.ok) throw new Error('Fehler beim Laden des Memes')
 
@@ -35,15 +38,16 @@ const fetchMeme = async () => {
   }
 }
 
-// Meme anzeigen/verbergen
+// toggle funktion für den button
+// lädt das erste meme nur wenn nochn keins da ist
 const toggleMeme = () => {
   showMeme.value = !showMeme.value
   if (showMeme.value && !meme.value) {
-    fetchMeme()
+    fetchMeme()  // nur beim ersten mal laden
   }
 }
 
-// Neues Meme laden
+// für den neues meme button
 const loadNewMeme = () => {
   fetchMeme()
 }

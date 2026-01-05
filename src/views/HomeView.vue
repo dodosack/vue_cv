@@ -1,15 +1,19 @@
 <script setup lang="ts">
+// homeview ist die hauptseite mit hero section und den previews
+// importiere alle componenten die ich brauch
 import { useProfileStore } from '@/stores/profile'
-import ProfileHeader from '@/components/ProfileHeader.vue'
+import ProfileHeader from '@/components/ProfileHeader.vue'  // wird grad nicht benutzt aber lass ich mal drin
 import SkillList from '@/components/SkillList.vue'
 import ExperienceCard from '@/components/ExperienceCard.vue'
 import TypingAnimation from '@/components/TypingAnimation.vue'
-import HackerNews from '@/components/HackerNews.vue'
-import ProgrammerMeme from '@/components/ProgrammerMeme.vue'
+import HackerNews from '@/components/HackerNews.vue'  // die hacker news componente rechts
+import ProgrammerMeme from '@/components/ProgrammerMeme.vue'  // meme section unten links
 
+// pinia store für die profil daten
 const store = useProfileStore()
 
-// Texte für die Typing Animation
+// die texte die in der hero section durchgetippt werden
+// kann man einfach erwietern wenn man mehr haben will
 const typingTexts = [
   'Frontend Developer',
   'Vue.js Enthusiast',
@@ -76,7 +80,7 @@ const typingTexts = [
 
       <!-- Right Column: Hacker News -->
       <div class="right-column">
-        <HackerNews :max-stories="6" />
+        <HackerNews :max-stories="7" />
       </div>
     </div>
   </div>

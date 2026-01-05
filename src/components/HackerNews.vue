@@ -1,46 +1,50 @@
 <script setup lang="ts">
+// hacker news componente für die tech news auf der startseite
+// hab die api von firebase genommen weil die offizielle doku das so empfohlen hat
 import { ref, onMounted } from 'vue'
 
-// TypeScript Interface
+// das interface für ne einzelne story  von hackernews
 interface HackerNewsStory {
   id: number
   title: string
-  url?: string
+  url?: string  // optional weil manche stories keinen link haben sondern nur text
   by: string
   score: number
   time: number
-  descendants?: number  // Anzahl Kommentare
+  descendants?: number  // anzahl kommentare auch optional
 }
 
-// Props
+// props für wieviele stories angezeigt werden solen
 const props = withDefaults(defineProps<{
   maxStories?: number
 }>(), {
-  maxStories: 5
+  maxStories: 5  // default is 5 aber in homeview mach ichs auf 6
 })
 
-// State
-const stories = ref<HackerNewsStory[]>([])
+// reactive state sachen
+const stories = ref<HackerNewsStory[]>([])  // die stories die wir anzeiegn
 const isLoading = ref(true)
-const error = ref<string | null>(null)
+const error = ref<string | null>(null)  // fehler message oder null wenns klappt
 
-// Hacker News API URLs
+// basis url für die hacker news api
 const API_BASE = 'https://hacker-news.firebaseio.com/v0'
 
-// Stories laden
+// holt die top stories von hackernews
+// erst die ids dann für jede id die details
 const fetchStories = async () => {
   isLoading.value = true
   error.value = null
 
   try {
-    // 1. Top Story IDs holen
+    // hol die ids von den top stories
     const idsResponse = await fetch(`${API_BASE}/topstories.json`)
     if (!idsResponse.ok) throw new Error('Fehler beim Laden der Story-IDs')
-    
-    const allIds: number[] = await idsResponse.json()
-    const topIds = allIds.slice(0, props.maxStories)
 
-    // 2. Details für jede Story holen
+    const allIds: number[] = await idsResponse.json()
+    const topIds = allIds.slice(0, props.maxStories)  // nur die ersten x nehmen
+
+    // für jede id die story details holen
+    // mach das parallel mit promise.all weil sonst dauerts ewig
     const storyPromises = topIds.map(async (id) => {
       const response = await fetch(`${API_BASE}/item/${id}.json`)
       return response.json()
@@ -49,25 +53,28 @@ const fetchStories = async () => {
     stories.value = await Promise.all(storyPromises)
 
   } catch (err) {
+    // error handling falls was schief geht
     error.value = err instanceof Error ? err.message : 'Unbekannter Fehler'
   } finally {
     isLoading.value = false
   }
 }
 
-// Zeit formatieren (Unix Timestamp → "vor X Stunden")
+// macht aus dem unix timestamp sowas wie vor 3 stunden
+// hab die zahlen von stackoverflow kopiert lol
 const formatTime = (timestamp: number): string => {
   const seconds = Math.floor(Date.now() / 1000 - timestamp)
-  
+
   if (seconds < 60) return 'gerade eben'
   if (seconds < 3600) return `vor ${Math.floor(seconds / 60)} Min.`
   if (seconds < 86400) return `vor ${Math.floor(seconds / 3600)} Std.`
   return `vor ${Math.floor(seconds / 86400)} Tagen`
 }
 
-// Domain aus URL extrahieren
+// holt die domain aus ner url für die anzeige
+// zb aus https www.github.com bla wird github.com
 const getDomain = (url?: string): string => {
-  if (!url) return 'news.ycombinator.com'
+  if (!url) return 'news.ycombinator.com'  // fallback wenn keine url da is
   try {
     return new URL(url).hostname.replace('www.', '')
   } catch {
@@ -75,12 +82,10 @@ const getDomain = (url?: string): string => {
   }
 }
 
-// Lifecycle
+// lädt die stories wenn die componente gemounted wird
 onMounted(() => {
   fetchStories()
 })
-
-// eig in home view rein
 </script>
 
 <template>

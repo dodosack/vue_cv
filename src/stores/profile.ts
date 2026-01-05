@@ -16,11 +16,11 @@ export const useProfileStore = defineStore('profile', () => {
 
   // Skills
   const skills = ref<Skill[]>([
-    { name: 'Vue.js', level: 85, category: 'frontend' },
+    { name: 'Vue.js', level:65, category: 'frontend' },
     { name: 'TypeScript', level: 75, category: 'frontend' },
-    { name: 'CSS/SCSS', level: 80, category: 'frontend' },
+    { name: 'CSS/SCSS', level: 50, category: 'frontend' },
     { name: 'Node.js', level: 60, category: 'backend' },
-    { name: 'Git', level: 70, category: 'tools' }
+    { name: 'Git', level: 90, category: 'tools' }
   ])
 
   // Erfahrungen
@@ -35,11 +35,11 @@ export const useProfileStore = defineStore('profile', () => {
     },
     {
       id: 2,
-      company: 'Startup AG',
-      position: 'Junior Developer',
+      company: 'Google',
+      position: 'Intern',
       startDate: '2021-06',
       endDate: '2022-12',
-      description: 'Fullstack Entwicklung mit JavaScript'
+      description: 'Kaffemaschinen Reiniger'
     }
   ])
 
