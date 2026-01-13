@@ -43,7 +43,7 @@ export interface GitHubRepo {
   id: number
   name: string
   full_name: string
-  description: string | null
+  description: string | null //-> sonst fehler bei meinen repos
   html_url: string
   homepage: string | null  // live demo link
   language: string | null

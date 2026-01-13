@@ -16,15 +16,21 @@ const filteredSkills = computed(() => {
   if (!props.filterCategory) {
     return props.skills  // alle zurückgeben wenn kein filter
   }
-  return props.skills.filter(s => s.category === props.filterCategory)
+  return props.skills.filter(s => s.category === props.filterCategory) //gefiltert nach dem filter 
 })
+
+
+
+//loop über filteredSkills
+//key muss da sein
+//skill wird als pprrop an skillist übergeben
 </script>
 
 <template>
   <div class="skill-list">
     <SkillBadge 
       v-for="skill in filteredSkills" 
-      :key="skill.name"
+      :key="skill.name" 
       :skill="skill"
     />
     

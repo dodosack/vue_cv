@@ -4,7 +4,7 @@
 import { RouterLink } from 'vue-router'
 import { useProfileStore } from '@/stores/profile'
 
-const store = useProfileStore()  // für dark mode toggle
+const store = useProfileStore()  // für dark mode toggle etc
 </script>
 
 <template>

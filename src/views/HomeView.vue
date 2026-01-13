@@ -6,6 +6,7 @@ import { useProfileStore } from '@/stores/profile'
 // import ProfileHeader from '@/components/ProfileHeader.vue'
 import SkillList from '@/components/SkillList.vue'
 import ExperienceCard from '@/components/ExperienceCard.vue'
+
 import TypingAnimation from '@/components/TypingAnimation.vue'
 import HackerNews from '@/components/HackerNews.vue'  // die hacker news componente rechts
 import ProgrammerMeme from '@/components/ProgrammerMeme.vue'  // meme section unten links
@@ -59,6 +60,7 @@ const typingTexts = [
         <section class="preview-section">
           <h2>Skills</h2>
           <SkillList :skills="store.skills.slice(0, 4)" />
+          <!--prop an skillist child -->
           <RouterLink to="/skills" class="see-more">
             Alle Skills ansehen →
           </RouterLink>
@@ -68,8 +70,11 @@ const typingTexts = [
           <h2>Aktuelle Position</h2>
           <ExperienceCard
             v-if="store.currentJob"
+            
             :experience="store.currentJob"
           />
+                    <!--das wird immer frisch computed und v-if nur angezeigt wenn da v show geht auch  -->
+
           <RouterLink to="/experience" class="see-more">
             Kompletter Werdegang →
           </RouterLink>
@@ -180,6 +185,7 @@ const typingTexts = [
     grid-template-columns: 1fr;
   }
 }
+/* kleine bildschirme*/
 
 .left-column {
   display: flex;

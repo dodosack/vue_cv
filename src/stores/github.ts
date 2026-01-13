@@ -17,34 +17,36 @@ export const useGitHubStore = defineStore('github', () => {
     repos.value.filter((repo: GitHubRepo) => !repo.fork)
   )
 
-  // ÜBERFLÜSSIG - topRepos wird nirgends benutzt
-  // const topRepos = computed<GitHubRepo[]>(() =>
-  //   [...ownRepos.value].sort((a: GitHubRepo, b: GitHubRepo) => b.stargazers_count - a.stargazers_count)
-  // )
+
 
   // alle sprachen die in den repos verwendet werden
   // mit Set damit keine duplikate
   const languages = computed<string[]>(() => {
     const langs = repos.value
       .map((repo: GitHubRepo) => repo.language)
+//  macht die in ein array und wandelt repo in repo.languúage um (kopie)
+      
       .filter((lang): lang is string => lang !== null)
-    return [...new Set(langs)]
+    //null weg machen
+      return [...new Set(langs)]// SET wie in python einzigartig macht duplikate weg
   })
 
   // holt alle repos von nem github user
   async function fetchRepos(githubUsername: string) {
+    //non blocking thread
     // check ob schon am laden damit nicht doppelt gefetched wird
     if (isLoading.value) return
 
     isLoading.value = true
-    error.value = null
+    error.value = null //löscht error
     username.value = githubUsername
 
     try {
-      // github api  per_page=100 damit wir möglichst alle repos kriegen
+      // github api  
+      // per_page=100 damit wir  alle repos kriegen
       const response = await fetch(
         `https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=100`
-      )
+      ) //await sonst wartet der ncihts
 
       if (!response.ok) {
         if (response.status === 404) {
@@ -53,13 +55,13 @@ export const useGitHubStore = defineStore('github', () => {
         throw new Error(`GitHub API Fehler: ${response.status}`)
       }
 
-      const data: GitHubRepo[] = await response.json()
-      repos.value = data
+      const data: GitHubRepo[] = await response.json() //wandelt in js objekte und ist auch asynchon
+      repos.value = data // wichtigste damit es im state management ist
 
     } catch (err) {
       error.value = err instanceof Error ? err.message : 'Unbekannter Fehler'
       repos.value = []
-    } finally {
+    } finally {//immer
       isLoading.value = false
     }
   }

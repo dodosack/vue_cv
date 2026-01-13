@@ -1,6 +1,7 @@
 // profil store mit allen persönlichen daten
 // das is quasi die datenbank für die ganze app
 import { ref, computed } from 'vue'
+//computed für .find 
 import { defineStore } from 'pinia'
 import type { Skill, Experience, Profile } from '@/types'
 // Project import überflüssig weil projects auskommentiert
@@ -22,7 +23,7 @@ export const useProfileStore = defineStore('profile', () => {
     { name: 'TypeScript', level: 75, category: 'frontend' },
     { name: 'CSS/SCSS', level: 50, category: 'frontend' },
     { name: 'Node.js', level: 60, category: 'backend' },
-    { name: 'Git', level: 90, category: 'tools' }
+    { name: 'Gitt', level: 900, category: 'tools' }
   ])
 
   // berufserfahrung  endDate null heisst aktueller job
@@ -40,7 +41,7 @@ export const useProfileStore = defineStore('profile', () => {
       company: 'Google',
       position: 'Intern',
       startDate: '2021-06',
-      endDate: '2022-12',
+      endDate: null,
       description: 'Kaffemaschinen Reiniger'
     }
   ])
@@ -72,9 +73,11 @@ export const useProfileStore = defineStore('profile', () => {
   // )
 
   // gibt den aktuellen job zurück also wo endDate null is
+ //rechnet immer neu aus wenn  experience sich ändert
   const currentJob = computed(() =>
     experiences.value.find(e => e.endDate === null)
-  )
+  ) //findet erstes element also kann nur ein current job
+
 
   // toggle für dark mode button in der navbar
   function toggleDarkMode() {
@@ -90,5 +93,5 @@ export const useProfileStore = defineStore('profile', () => {
     // frontendSkills,  // auskommentiert weil überflüssig
     currentJob,
     toggleDarkMode
-  }
+  } //jeder kann auf diese sachen aus dem store zugreifen
 })

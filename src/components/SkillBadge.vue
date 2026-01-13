@@ -16,11 +16,12 @@ const props = defineProps<{
       <div 
         class="skill-progress" 
         :style="{ width: skill.level + '%' }"
-      ></div>
+        ></div>
+      </div>
+      <span class="skill-level">{{ skill.level }}%</span>
     </div>
-    <span class="skill-level">{{ skill.level }}%</span>
-  </div>
-</template>
+  </template>
+    <!-- Dynamisches Inline-Style width an skill.level -->
 
 <style scoped>
 .skill-badge {

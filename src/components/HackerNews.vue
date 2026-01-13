@@ -1,3 +1,5 @@
+<!-- damit es nicht leer aussieht hat sonst kaum was mit meinem projekt utun-->
+
 <script setup lang="ts">
 // hacker news componente für die tech news auf der startseite
 // hab die api von firebase genommen weil die offizielle doku das so empfohlen hat
@@ -149,7 +151,7 @@ onMounted(() => {
       @click="fetchStories" 
       class="refresh-btn"
     >
-      🔄 Aktualisieren
+       Aktualisieren
     </button>
   </div>
 </template>

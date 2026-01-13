@@ -3,6 +3,7 @@
 // hier wird dark mode auf die ganze app angewandt
 import { useProfileStore } from '@/stores/profile'
 import NavBar from '@/components/NavBar.vue'
+//src/ alias
 
 // store für dark mode und profil daten
 const store = useProfileStore()

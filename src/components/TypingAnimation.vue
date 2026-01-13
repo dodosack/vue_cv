@@ -50,7 +50,7 @@ const type = () => {
       isTyping.value = true
       currentIndex.value = (currentIndex.value + 1) % props.texts.length
       timeout = setTimeout(type, props.typingSpeed)
-    }
+    }// race condition
   }
 }
 
@@ -68,7 +68,7 @@ onMounted(() => {
 })
 
 // räumt timeouts und intervals auf wenn componente zerstört wird
-// sonst gibts memory leaks
+// sonst gibts memory leaks wiesoo??
 onUnmounted(() => {
   if (timeout) clearTimeout(timeout)
   if (cursorInterval) clearInterval(cursorInterval)

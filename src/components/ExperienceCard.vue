@@ -8,6 +8,7 @@ const props = defineProps<{
   experience: Experience
 }>()
 
+//hier hilfe gesucht musste das so machen sonnst würde nUll anstelle von heute stehen
 // macht aus 2023-01 sowas wie Jan 2023
 const formatDate = (date: string | null): string => {
   if (!date) return 'Heute'  // null heisst aktueller job
@@ -19,6 +20,11 @@ const formatDate = (date: string | null): string => {
                   'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez']
   return `${months[parseInt(month) - 1]} ${year}`
 }
+
+
+
+
+
 
 // formatierter zeitraum zb Jan 2023 - Heute
 const dateRange = computed(() => {

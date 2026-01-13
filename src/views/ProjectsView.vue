@@ -8,7 +8,7 @@ import type { GitHubRepo } from '@/types'
 
 const githubStore = useGitHubStore()
 
-// mein github username  hier ändern wenn du nen anderen user willst
+// mein github username  hier ändern wenn fake github
 const GITHUB_USERNAME = 'dodosack'
 
 // filter state
